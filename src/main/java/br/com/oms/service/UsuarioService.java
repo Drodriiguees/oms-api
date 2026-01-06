@@ -6,15 +6,14 @@ import org.springframework.stereotype.Service;
 
 import br.com.oms.model.Usuario;
 import br.com.oms.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class UsuarioService {
 
     private UsuarioRepository usuarioRepository;
 
-    public UsuarioService (UsuarioRepository usuarioRepository){
-        this.usuarioRepository = usuarioRepository;
-    }
 
     public Usuario salvar(Usuario usuario){
         return usuarioRepository.save(usuario);
@@ -23,7 +22,6 @@ public class UsuarioService {
     public List<Usuario> listarTodos(){
         return usuarioRepository.findAll();
     }
-
 
     public void delete (Long id){
         usuarioRepository.deleteById(id);
