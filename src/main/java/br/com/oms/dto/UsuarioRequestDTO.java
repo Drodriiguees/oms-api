@@ -1,6 +1,15 @@
 package br.com.oms.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public record UsuarioRequestDTO
-( String nome, String email) {
+( 
+    @NotBlank
+    String nome, 
+
+    @NotBlank
+    @Email
+    String email) {
 
 }
