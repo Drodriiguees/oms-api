@@ -12,7 +12,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
+    private final 
+    UsuarioRepository usuarioRepository;
 
 
     public Usuario salvar(Usuario usuario){

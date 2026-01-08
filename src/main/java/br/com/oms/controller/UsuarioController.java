@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.oms.dto.UsuarioRequestDTO;
+import br.com.oms.dto.UsuarioResponseDTO;
 import br.com.oms.model.Usuario;
 import br.com.oms.service.UsuarioService;
 import jakarta.validation.Valid;
@@ -28,13 +29,19 @@ public class UsuarioController {
  private final UsuarioService usuarioService;
 
   @PostMapping
-public Usuario criar(@Valid @RequestBody UsuarioRequestDTO dto) {
+public UsuarioResponseDTO criar(@Valid @RequestBody UsuarioRequestDTO dto) {
 
     Usuario usuario = new Usuario();
     usuario.setNome(dto.nome());
     usuario.setEmail(dto.email());
 
-    return usuarioService.salvar(usuario);
+    Usuario usuarioSalvo = usuarioService.salvar(usuario);
+
+    return new UsuarioResponseDTO(
+        usuarioSalvo.getId(),
+        usuarioSalvo.getNome(),
+        usuarioSalvo.getEmail()
+    );
 }
 
     
